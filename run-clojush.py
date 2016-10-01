@@ -23,6 +23,7 @@ uni_mut_rate = 0.01
 problem = sys.argv[1]
 
 wallclock_limit = float(sys.argv[4])
+seed = int(sys.argv[6])
 
 for i in range(len(sys.argv)-1):
     if (sys.argv[i] == '-popsize'):
@@ -71,7 +72,8 @@ arg_dict[":alignment-deviation"] = alignment_dev
 arg_dict[":uniform-mutation-rate"] = uni_mut_rate
 
 uberjar = "clojush-2.0.73-SNAPSHOT-standalone.jar"
-command = ["./runsolver", "-W", str(wallclock_limit), "java", "-jar", uberjar, problem]
+runsolver_time_file = "/tmp/smac_runsolver_time_" + str(seed) + ".txt"
+command = ["./runsolver", "-v", runsolver_time_file, "-C", str(wallclock_limit), "java", "-jar", uberjar, problem]
 for key in arg_dict:
     command = command + [key, str(arg_dict[key])]
 
@@ -87,4 +89,13 @@ for line in lines:
     if m:
         score = 0
 
-print "Result for SMAC: SUCCESS, 0, 0, %d, 0" % score
+time = 1000000
+with open(runsolver_time_file) as f:
+    for line in f.read().splitlines():
+        m = re.search("CPUTIME=(\\d+\\.\\d+)", line)
+        if m:
+            time = float(m.group(1))
+if time > wallclock_limit:
+    time = wallclock_limit
+
+print "Result for SMAC: SUCCESS, %f, 0, %d, 0" % (time, score)
