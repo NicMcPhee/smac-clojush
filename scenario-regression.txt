@@ -1,9 +1,9 @@
 algo = ./run-clojush.py clojush.problems.demos.simple-regression
 
 pcs-file = clojush.pcs
-runObj = QUALITY
+runObj = RUNTIME
 cutoffTime = 300
-wallclock-limit = 3600
+cputime-limit = 7200
 deterministic = 0
 use-instances = false
 
