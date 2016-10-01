@@ -1,9 +1,10 @@
+algo = ./run-clojush.py clojush.problems.software.replace-space-with-newline
+
 pcs-file = clojush.pcs
 runObj = QUALITY
 cutoffTime = 3600
 wallclock-limit = 604800
 deterministic = 0
-algo = ./run-clojush-rswn.py
 use-instances = false
 
 cli-log-all-calls = true
