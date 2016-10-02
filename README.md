@@ -1,4 +1,4 @@
-# Setting up SMAC on fly
+# Setting up SMAC for Clojush
 
 Configuration and scripts for using SMAC to optimize Clojush paramters
 
