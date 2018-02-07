@@ -24,7 +24,9 @@ I linked the big long `smac...` directory to just `smac` so you can refer to `~n
 
 `curl http://www.cril.univ-artois.fr/~roussel/runsolver/runsolver-3.3.5.tar.bz2 -o runsolver.bz2`
 
-Extrac the contents. Go into the `src` directory and build with `make`.
+Extrac the contents. Go into the `src` directory and build with `make`. :warning: It looks like a change in the defaults
+for the `g++` compiler means that `make` fails. I found that adding `-std=gnu++98` to the end of the `DEBUG` line in the
+`runsolver` `Makefile` fixed the problem and everything compiled fine after that.
 
 I have `runsolver` in my home directory on fly, so
 
