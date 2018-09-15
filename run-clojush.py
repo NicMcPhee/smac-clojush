@@ -71,7 +71,7 @@ arg_dict[":alternation-rate"] = alt_rate
 arg_dict[":alignment-deviation"] = alignment_dev
 arg_dict[":uniform-mutation-rate"] = uni_mut_rate
 
-uberjar = "clojush-2.0.73-SNAPSHOT-standalone.jar"
+uberjar = "clojush-standalone.jar"
 runsolver_time_file = "/tmp/smac_runsolver_time_" + str(seed) + ".txt"
 command = ["./runsolver", "-v", runsolver_time_file, "-C", str(wallclock_limit), "java", "-jar", uberjar, problem]
 for key in arg_dict:
